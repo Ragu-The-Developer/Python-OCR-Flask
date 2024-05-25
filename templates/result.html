@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processed Image</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+        body {
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .visuals-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .visuals-container img {
+            max-width: 200px;
+            max-height: 200px;
+        }
+        .text-center
+        {
+           font-family: "Reddit Sans", sans-serif;
+           font-optical-sizing: auto;
+           font-weight: <weight>;
+           font-style: normal;
+         }
+         h2
+         {
+           margin-top: 10%;
+         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Processed Image</h1>
+        <div class="image-container">
+            <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid">
+        </div>
+        <div>
+            <h2>Extracted Text</h2>
+            <p>{{ text }}</p>
+        </div>
+        <div>
+            <h2>Extracted Visual Elements</h2>
+            <div class="visuals-container">
+                {% for visual_path in visual_paths %}
+                    <img src="{{ url_for('visual_file', filename=visual_path.split('/')[-1]) }}" alt="Visual Element">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
