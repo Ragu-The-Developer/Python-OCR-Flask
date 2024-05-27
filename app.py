@@ -78,4 +78,4 @@ if __name__ == '__main__':
         os.makedirs(UPLOAD_FOLDER)
     if not os.path.exists(VISUAL_FOLDER):
         os.makedirs(VISUAL_FOLDER)
-    app.run(debug=True)
+    app.run(debug=True, host='192.168.137.147');
